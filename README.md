@@ -1,79 +1,91 @@
-Summary of Investigation
+🔍 Data Exfiltration Investigation Report
 
-A suspected data exfiltration attempt was investigated involving the unauthorized archiving of employee data using PowerShell and 7-Zip. The incident involved recurring PowerShell script execution, file archiving, and potential exfiltration attempts. However, no immediate signs of data exfiltration were observed. The investigation focused on PowerShell execution logs, file system activity, and network traffic analysis using Microsoft Defender for Endpoint (MDE).
+🚨 Summary of Investigation
 
-Scenarios of What Took Place
+A suspected data exfiltration attempt was investigated involving the unauthorized archiving of employee data using PowerShell and 7-Zip. The incident included recurring PowerShell script execution, file archiving, and potential exfiltration attempts. However, no immediate signs of data exfiltration were observed. The investigation focused on PowerShell execution logs, file system activity, and network traffic analysis using Microsoft Defender for Endpoint (MDE).
 
-Scenario 1: Unauthorized File Archiving
+🎭 Scenarios of What Took Place
 
-PowerShell script executed silently.
+🔹 Scenario 1: Unauthorized File Archiving
 
-7-Zip was installed without authorization.
+📌 Key Events:
 
-Employee data was compressed into a ZIP file.
+🛑 PowerShell script executed silently.
 
-Archives were stored in a "backup" folder.
+🔧 7-Zip was installed without authorization.
 
-Scenario 2: Hunting for Exfiltration Evidence
+🗂️ Employee data was compressed into a ZIP file.
 
-Investigated network logs for outbound transfers.
+📂 Archives were stored in a "backup" folder.
 
-No immediate network exfiltration detected.
+🔹 Scenario 2: Hunting for Exfiltration Evidence
 
-Logs reviewed for uploads to cloud services or external destinations.
+📌 Key Events:
 
-Scenario 3: Incident Response & Containment
+🌐 Investigated network logs for outbound transfers.
 
-System was immediately isolated upon discovering the archiving.
+❌ No immediate network exfiltration detected.
 
-Management was notified of PowerShell-based file compression.
+🔎 Reviewed logs for uploads to cloud services or external destinations.
 
-No signs of data leaving the network, but monitoring remains ongoing.
+🔹 Scenario 3: Incident Response & Containment
 
-MITRE ATT&CK Framework TTPs
+📌 Key Actions Taken:
 
-Execution
+🔒 System was immediately isolated upon discovering the archiving.
 
-T1059.001 – Command and Scripting Interpreter: PowerShell
+📢 Management was notified of PowerShell-based file compression.
+
+⚠️ No signs of data leaving the network, but monitoring remains ongoing.
+
+🔹 Scenario 4: Potential Persistence Mechanisms
+
+📌 Key Areas Investigated:
+
+🔄 Checked scheduled tasks and registry modifications for persistence.
+
+📜 Reviewed startup scripts and unauthorized service executions.
+
+❌ No confirmed persistence mechanisms found, but continued monitoring advised.
+
+🎯 MITRE ATT&CK Framework TTPs
+
+🎭 Execution
+
+🖥️ T1059.001 – Command and Scripting Interpreter: PowerShell
 
 Used for silent installation and execution.
 
-Persistence
+🔗 Persistence
 
-T1547.001 – Boot or Logon Autostart Execution
+🏗️ T1547.001 – Boot or Logon Autostart Execution
 
 Possible script persistence via registry keys or scheduled tasks.
 
-Defense Evasion
+🎭 Defense Evasion
 
-T1564.004 – Hide Artifacts: NTFS File Attributes
+🔍 T1564.004 – Hide Artifacts: NTFS File Attributes
 
 ZIP files may have been hidden or misleadingly named.
 
-Collection
+📦 Collection
 
-T1560.001 – Archive Collected Data: Archive via Utility
+🗂️ T1560.001 – Archive Collected Data: Archive via Utility
 
 7-Zip was used to compress sensitive data.
 
-Exfiltration (Potential Risk)
+🌐 Exfiltration (Potential Risk)
 
-T1048 – Exfiltration Over Alternative Protocol
+🚀 T1048 – Exfiltration Over Alternative Protocol
 
 No exfiltration detected, but remains a concern.
 
-T1567 – Exfiltration Over Web
+☁️ T1567 – Exfiltration Over Web
 
 Possible cloud service or external transfers need further monitoring.
 
-Next Steps & Recommendations
+🛡️ Next Steps & Recommendations
 
-✔ Restrict PowerShell Execution: Implement Constrained Language Mode & Script Block Logging.
-✔ Enforce Application Control: Use AppLocker/WDAC to block unauthorized tools like 7-Zip.
-✔ Deploy DLP Policies: Prevent unauthorized access to sensitive employee data.
-✔ Monitor Network Activity: Set up egress filtering in Defender for Endpoint & Defender for Cloud Apps.
-✔ Refine Advanced Hunting Queries: Automate real-time alerts for suspicious file archiving & PowerShell execution.
-✔ Conduct Regular Threat Hunts: Improve incident response workflows in Sentinel & Defender for XDR.
+✔️ Restrict PowerShell Execution: Implement Constrained Language Mode & Script Block Logging.✔️ Enforce Application Control: Use AppLocker/WDAC to block unauthorized tools like 7-Zip.✔️ Deploy DLP Policies: Prevent unauthorized access to sensitive employee data.✔️ Monitor Network Activity: Set up egress filtering in Defender for Endpoint & Defender for Cloud Apps.✔️ Refine Advanced Hunting Queries: Automate real-time alerts for suspicious file archiving & PowerShell execution.✔️ Conduct Regular Threat Hunts: Improve incident response workflows in Sentinel & Defender for XDR.
 
-🚀 Continuous monitoring and security enhancements are required to prevent future unauthorized data access and exfiltration attempts.
-
+🚀 Continuous monitoring and security enhancements are required to prevent future unauthorized data access and exfiltration attempts. 🔐
